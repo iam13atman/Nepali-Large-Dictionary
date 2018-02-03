@@ -6,3 +6,5 @@
 !LICENSE.txt
 !parsed-output.unicode
 !.gitignore
+!words.txt
+!extract-words.sh
