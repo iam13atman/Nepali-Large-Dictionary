@@ -1,0 +1,49 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import sys
+import re
+
+DELIMETER = "\n"
+WORD_MEANING_SEPERATOR = " ~ "
+
+# returns a file iterator
+def get_dictionary():
+    f = open("NA2067BS_NepaliBrihatShabdakosh.one_per_line.txt", 'r')
+    return f
+
+# returns an iterator of sanket-suchi
+def get_notifier_list():
+    f = open("sanket-suchi", "r")
+    f = [_.replace("\n", "").strip() for _ in f]
+    return f   # ['०']
+
+# remove newlines from the dictionary unless a word-meaning is over
+def merge_lines(line):
+    line = line.replace("\n", "").strip()
+    return line
+
+# seperate each word-meaning entity by DELIMETER
+def seperate(dictionary):
+    for line in dictionary:
+        splits = line.split()
+        estimated_word_list = splits[:3]
+        for estimated_word in enumerate(estimated_word_list, 0):
+            if '०' in estimated_word[1]:
+                word = "".join(splits[:estimated_word[0]])
+                meaning = " ".join(splits[estimated_word[0]:])
+                if len(word) == 0:
+                    break
+                yield  "\n" + merge_lines(word + WORD_MEANING_SEPERATOR + meaning)
+                break
+        else:
+            yield merge_lines(line)
+
+def main():
+    dictionary = get_dictionary()
+    for each in seperate(dictionary):
+        sys.stdout.write(each)
+
+
+if __name__ == '__main__':
+    main()

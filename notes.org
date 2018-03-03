@@ -1,0 +1,66 @@
+#+TITLE: Notes about Nepali-Large-Dictionary
+#+AUTHOR: अायुष झा
+#+BEGIN_COMMENT
+#+OPTIONS: ^:nil ;; tells org-mode to not apply subscript to underscored (_) words, since underscore is used in filenames alot
+#+END_COMMENT
+#+OPTIONS: ^:nil
+
+* Notes about the Vrihat Shabdakosh
+** syntax
+** <शब्द> - संकेत अर्थहरु
+** converting pdf to text
+- gg denotes a new page in the dictionary
+- dictionary starts at page 25
+- pdftotext -f 25 <name od dictionary>.pdf # gives <name of dictionary>.txt
+- starting from page 25 in the pdf file
+** things to replace in the converted text
+- “ -> F # converts the “ character to chandrabindu
+- ® -> / # converts ® character to nepali ra
+** Files in the project
+*** characters_in_dict.txt
+List of characters that are in the dictionary. This file contains
+ASCII characters, as used by the Preeti Font in the dictionary.
+*** converter
+A bison-based converter to convert preeti to unicode.
+Supports conversion from multiple fonts to unicode.
+<work in progress>
+*** create_tables.sql
+This is the create statements extracted from dictionary_data.sql
+*** dictionary_data.sql
+This file contains an sql dump of a dictionary provided by itk.org.np
+This is a complete dictionary that I intend to exgtract data from
+*** dictionary.unicode
+unicode translation of NBS.dictionary.pdf, starting from page 25
+*** LICENSE.txt
+This project and all it's code is licensed under the following terms
+and conditions
+*** NBS.dictionary.one_per_line.pdf
+Dictionary in pdf format with a single sequence of texts, as opposed to the
+origional `NBS.dictionary.pdf` file
+*** NBS.dictionary.one_per_line.unicode
+NBS.dictionary.one_per_line.pdf converted to text and then into unicode
+*** NBS.dictionary.pdf
+The origional dictionary that I am converting from
+*** NBS.dictionary.txt
+The origional dictionary, converted to text-format using `pdftotext` program.
+The font in this file is preeti
+*** NBS.dictionary.unicode.txt
+Converted the NBS.dictionary.txt font from preeti to unicode
+*** notes.org
+Notes about the project and it's progress
+*** parsed-output.unicode
+Contains the contents of the dictionary, parsed with the folowing delimition
+<word> ~ <meanings>
+*** preeti_to_unicode.scm
+Program to convert preeti font to unicode representation
+*** README.org
+The readme file for the project. Introduction text for Nepali-Large-Dictionary
+*** sanket-suchi
+List of sanket suchi, i.e.  descriptors for the words in the dictionary.
+This was extracted from NBS.dictionary.pdf.
+*** scripts
+A few scripts for data extraction and other useful tasks
+*** words_final.txt
+List of all the words in the dictionary in preeti font
+*** words.txt
+Another list of all the words in the dictionary in preeti font (less-refined)
