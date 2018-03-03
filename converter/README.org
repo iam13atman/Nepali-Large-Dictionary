@@ -1,0 +1,7 @@
+#+TITLE: Convert Preeti To Unicode
+
+* Initial Plan of implimentation
+  The concept is to take each non-whitespace character, and use it
+  as a token. Each token is then passed to the parser that takes the
+  tokens and produces the equivalent output.
+
